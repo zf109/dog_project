@@ -29,7 +29,7 @@ face_cascade = cv2.CascadeClassifier('dog_app/haarcascades/haarcascade_frontalfa
 
 # Load the model from saved data
 ResNet50_breed.load_weights('dog_app/saved_models/weights.best.ResNet50.hdf5')
-ResNet50_breed_graph = tf.get_default_graph()
+ResNet50_breed_graph = tf.get_default_graph() #lock down the default graph
 
 
 
@@ -94,7 +94,7 @@ def face_detector(img):
 def dog_detector(img):
     """returns "True" if a dog is detected in the image stored at img_path """
     image_convert(img)
-    prediction = ResNet50_predict_labels(img_path)
+    prediction = ResNet50_predict_labels(img)
     return ((prediction <= 268) & (prediction >= 151))
 
 
